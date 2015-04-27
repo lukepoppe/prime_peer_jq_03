@@ -1,0 +1,25 @@
+#name {
+
+	color: #0000ff;
+	font-size: 20px;
+	margin-top: 40px
+}
+
+.row{
+	border-bottom: 3px solid black;
+	border-bottom-right-radius: 1.5em;
+	
+
+
+}
+#searchResults{
+	display: inline-block;
+	
+
+}
+h4{
+
+
+	font-size: 20px;
+	margin-top: 40px
+}
