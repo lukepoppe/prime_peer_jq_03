@@ -7,19 +7,22 @@
 
 .row{
 	border-bottom: 3px solid black;
-	border-bottom-right-radius: 1.5em;
-	
-
-
+	border-bottom-right-radius: 3em;
 }
+
 #searchResults{
 	display: inline-block;
-	
-
+	vertical-align: top;
 }
+
 h4{
-
-
 	font-size: 20px;
 	margin-top: 40px
+}
+
+.bill{
+	display: none;
+}
+body{
+	background-color: #E8E8E8 ;
 }

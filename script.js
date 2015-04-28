@@ -1,62 +1,52 @@
-var apikey = 'YOUR-API-KEY'; // Put your API key here
-
-// Use this function to do stuff with your results. 
-// It is called after 'search' is executed.
 function searchCallback(results) {
 	for (var i = 0; i < 10; i++) {
+		var currentRow;
 		var platformName = "";
-		for ( j = 0; j < results[i].platforms.length; j++) {
-			platformName +=  "- " + results[i].platforms[j].name;
-		};
-		
-		if((i +1) % 3 == 0 ){
+		for (var j = 0; j < results[i].platforms.length; j++) {
+			platformName += " - " + results[i].platforms[j].name;
+		}
+		if(i % 3 == 0) {
+			currentRow = i;
 			$('#searchResults').append(
-				'<div id="searchRow" class= "row">' +
+				'<div id="searchRow' + currentRow + '"class="row">' +
 					'<div id="result' + (i+1) + '" class="col-md-4">' +
-						'<div id="name"> Tittle: ' + results[i].name + '</div>' +
-						'<div id="image"><img src="' + results[i].image.thumb_url +'"/></div>' +
-						'<div id="description"><h4>Description: </h4>' + results[i].deck + '</div>' +
-						'<div id="platforms"><h4> Supported Platforms</h4>' + platformName + '</div>' +
-					'</div>' +
+						'<div id="name" ><h4>Game Title:</h4> ' + results[i].name + '</div>' +
+						'<div id="image"><img src="' + results[i].image.thumb_url + '"/></div>' +
+						'<div id="description" class="bill"><h5>Description:</h5> ' + results[i].deck + '</div>' +
+						'<div id="platforms" class="bill"><h5>Supported Platforms:</h5> ' + platformName + '</div>' +
+					'<div>' +
 				'</div>'
 			);
-
 		} else {
-		$('#searchResults').append(
-			'<div id="result' + (i+1) + '" class="col-md-4">' +
-				'<div id="name"> Tittle: ' + results[i].name + '</div>' +
-				'<div id="image"><img src="' + results[i].image.thumb_url +'"/></div>' +
-				'<div id="description"><h4>Description: </h4>' + results[i].deck + '</div>' +
-				'<div id="platforms"><h4> Supported Platforms</h4>' + platformName + '</div>' +
-			'</div>' 
-
+			$('#searchResults').children('#searchRow'+currentRow).append(
+				'<div id="result' + (i+1) + '" class="col-md-4">' +
+					'<div id="name"><h4>Game Title:</h4> ' + results[i].name + '</div>' +
+					'<div id="image"><img src="' + results[i].image.thumb_url + '"/></div>' +
+					'<div id="description" class="bill"><h5>Description:</h5> ' + results[i].deck + '</div>' +
+					'<div id="platforms" class="bill"><h5>Supported Platforms:</h5> ' + platformName + '</div>' +
+				'<div>'
 			);
-
-		};
-
+		}
 	}
 }
 
-
-
-
-
 var userInput = "";
-var apikey = "360640851fd82bba03cfed3e035021eb9eef3ef3";
-
+var apikey = "d40a650b5d8cc7c495d91736f95dee0b8993d809";
 
 $(document).ready(function() {
 	$('#submit').on('click', function(){
-	$('#searchResults').empty();
-		console.log("before " + userInput);
+		$('#searchResults').empty();
 		userInput = $('#search').val();
-		console.log("after " + userInput);
 		search(userInput);
 	});
-	// Start the search here!
-	
-
-
+	//this doesn't work yet, because we have to hide the images, platforms and descriptions first
+	$('#searchResults').on('click', ".col-md-4", function(){
+		if($(this).children('.bill').first().css('display') == 'none') {
+			$(this).children('.bill').show();
+		} else {
+			$(this).children('.bill').hide();
+		}
+	});
 });
 
 // HELPER FUNCTION
@@ -74,7 +64,7 @@ function search(query){
 	    },
 	    success: function(data) {
 	        searchCallback(data.results);
-	        console.log("results :" + data.results);
+	        console.log("result: " + data.results);
 	    }
 	});
 
