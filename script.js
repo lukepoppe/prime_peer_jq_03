@@ -9,8 +9,8 @@ function searchCallback(results) {
 			currentRow = i;
 			$('#searchResults').append(
 				'<div id="searchRow' + currentRow + '"class="row">' +
-					'<div id="result' + (i+1) + '" class="col-md-4">' +
-						'<div id="name" ><h4>Game Title:</h4> ' + results[i].name + '</div>' +
+					'<div id="result' + (i+1) + '" class="col-md-4 well">' +
+						'<div id="name" ><h4>Title:</h4> ' + results[i].name + '</div>' +
 						'<div id="image"><img src="' + results[i].image.thumb_url + '"/></div>' +
 						'<div id="description" class="bill"><h5>Description:</h5> ' + results[i].deck + '</div>' +
 						'<div id="platforms" class="bill"><h5>Supported Platforms:</h5> ' + platformName + '</div>' +
@@ -19,8 +19,8 @@ function searchCallback(results) {
 			);
 		} else {
 			$('#searchResults').children('#searchRow'+currentRow).append(
-				'<div id="result' + (i+1) + '" class="col-md-4">' +
-					'<div id="name"><h4>Game Title:</h4> ' + results[i].name + '</div>' +
+				'<div id="result' + (i+1) + '" class="col-md-4 well">' +
+					'<div id="name"><h4>Title:</h4> ' + results[i].name + '</div>' +
 					'<div id="image"><img src="' + results[i].image.thumb_url + '"/></div>' +
 					'<div id="description" class="bill"><h5>Description:</h5> ' + results[i].deck + '</div>' +
 					'<div id="platforms" class="bill"><h5>Supported Platforms:</h5> ' + platformName + '</div>' +

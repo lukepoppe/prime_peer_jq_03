@@ -12,7 +12,8 @@
 
 #searchResults{
 	display: inline-block;
-	vertical-align: top;
+	vertical-align: bottom;
+
 }
 
 h4{
@@ -24,5 +25,12 @@ h4{
 	display: none;
 }
 body{
-	background-color: #E8E8E8 ;
+	
+background-color: #536399;
+}
+.well, .jumbotron{
+	background-color: #C2C1FF;
+}
+#search{
+	vertical-align: center;
 }
